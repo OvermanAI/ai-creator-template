@@ -17,9 +17,9 @@ const levelColor: Record<string, string> = {
 }
 
 const levelLabel: Record<string, string> = {
-  '1': 'Level 1 — AI 創作力',
-  '2': 'Level 2 — 開課賺錢',
-  '3': 'Level 3 — 升級 OPC',
+  '1': 'Level 1 — 免費入門',
+  '2': 'Level 2 — 進階實戰',
+  '3': 'Level 3 — 全面升級',
 }
 
 export default async function CoursesPage() {

@@ -50,9 +50,9 @@ export const Lessons: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        { label: 'Level 1 — AI 創作力（免費）', value: '1' },
-        { label: 'Level 2 — 開課賺錢（付費）', value: '2' },
-        { label: 'Level 3 — 升級 OPC（高階）', value: '3' },
+        { label: 'Level 1 — 免費入門', value: '1' },
+        { label: 'Level 2 — 進階實戰（付費）', value: '2' },
+        { label: 'Level 3 — 全面升級（高階）', value: '3' },
       ],
     },
     {

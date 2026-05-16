@@ -17,7 +17,7 @@ const UPGRADE_PATH = [
   },
   {
     level: 'L3',
-    label: 'OPC 一人事業',
+    label: 'Level 3 全面升級',
     desc: '系統化，讓作品自動為你賺錢',
     color: '#00b388',
   },

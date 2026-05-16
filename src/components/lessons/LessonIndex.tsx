@@ -142,8 +142,8 @@ export function LessonIndex({ lessons, category }: LessonIndexProps) {
               <Link href="/sell" className={`ed-btn ${category === 'build' ? 'ed-btn-black' : 'ed-btn-white'}`}>
                 前往銷售 →
               </Link>
-              <Link href="/one-person-company" className={`ed-btn ${category === 'build' ? 'ed-btn-outline-black' : 'ed-btn-outline'}`}>
-                OPC 路線圖
+              <Link href="/pricing" className={`ed-btn ${category === 'build' ? 'ed-btn-outline-black' : 'ed-btn-outline'}`}>
+                升級路線圖
               </Link>
             </>
           ) : (
@@ -151,8 +151,8 @@ export function LessonIndex({ lessons, category }: LessonIndexProps) {
               <Link href="/build" className="ed-btn ed-btn-white">
                 前往建造 →
               </Link>
-              <Link href="/one-person-company" className="ed-btn ed-btn-outline">
-                OPC 路線圖
+              <Link href="/pricing" className="ed-btn ed-btn-outline">
+                升級路線圖
               </Link>
             </>
           )}

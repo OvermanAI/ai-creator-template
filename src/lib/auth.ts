@@ -2,7 +2,7 @@ import { betterAuth } from 'better-auth'
 import { magicLink } from 'better-auth/plugins'
 import { DatabaseSync } from 'node:sqlite'
 
-const dbPath = process.env.PAYLOAD_DATABASE_PATH || './aiart-dev.db'
+const dbPath = process.env.PAYLOAD_DATABASE_PATH || './dev.db'
 
 const googleProviderConfig =
   process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET

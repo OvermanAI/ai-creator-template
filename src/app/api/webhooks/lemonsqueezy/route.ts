@@ -93,7 +93,7 @@ async function upgradeStudentLevel(email: string, level: 'l2' | 'l3') {
 async function sendUpgradeEmail(email: string, level: 'l2' | 'l3') {
   try {
     const { sendEmail } = await import('@/lib/email/index')
-    const levelLabel = level === 'l3' ? 'Level 3 — 升級 OPC' : 'Level 2 — 開課賺錢'
+    const levelLabel = level === 'l3' ? 'Level 3 — 全面升級' : 'Level 2 — 進階實戰'
     const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://your-site.tw'
 
     await sendEmail({
