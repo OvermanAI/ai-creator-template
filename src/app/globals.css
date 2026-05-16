@@ -1,0 +1,365 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════
+   COLOR SYSTEM — 032c Editorial Red
+═══════════════════════════════════════════════════════ */
+:root {
+  --color-canvas:         #CC1F1F;   /* 032c signature red */
+  --color-canvas-raised:  #A81818;   /* darker red */
+
+  --color-card:           #FFFFFF;
+
+  --color-text:           #000000;
+  --color-text-muted:     #666666;
+
+  --color-text-inv:       #FFFFFF;
+  --color-text-muted-inv: rgba(255,255,255,0.60);
+
+  --color-l1: #ff2d55;
+  --color-l2: #FFB11B;
+  --color-l3: #00b388;
+
+  /* --color-accent injected by layout.tsx from coach.config.ts */
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════════════════ */
+* {
+  border-radius: 0 !important;
+  letter-spacing: 0 !important;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--color-canvas);
+  color: var(--color-text);
+  /* 內文：無襯線黑體 */
+  font-family: var(--font-zh-sans), 'Noto Sans TC', sans-serif;
+}
+
+body {
+  line-height: 1.9;
+  background-color: var(--color-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY — 雙語混排字體策略
+   英數 → Barlow Condensed（凝縮、現代、衝擊感）
+   繁中 → Noto Serif TC（思源宋體，高端、典雅、文化深度）
+═══════════════════════════════════════════════════════ */
+h1, h2, h3 {
+  /* font-stack 順序決定字元歸屬：
+     1. Barlow Condensed — 優先取英文字母 & 數字
+     2. Noto Serif TC    — 繁中字元回落到宋體
+     3. serif            — 安全後備 */
+  font-family: var(--font-display), var(--font-zh-serif), serif;
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+}
+
+h2 { font-weight: 900; line-height: 1.0; }
+h3 { font-weight: 400; }
+
+/* ═══════════════════════════════════════════════════════
+   GRAIN TEXTURE
+═══════════════════════════════════════════════════════ */
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+}
+
+/* ═══════════════════════════════════════════════════════
+   EDITORIAL BUTTON
+═══════════════════════════════════════════════════════ */
+.ed-btn {
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.5rem;
+  text-decoration: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ed-btn:hover {
+  opacity: 0.80;
+  transform: translateY(-1px);
+}
+
+.ed-btn:active {
+  transform: translateY(0);
+}
+
+.ed-btn-accent  { background: var(--color-accent); color: #fff; }
+.ed-btn-black   { background: #000; color: #fff; }
+.ed-btn-white   { background: #fff; color: #000; }
+.ed-btn-red     { background: var(--color-canvas); color: #fff; }
+
+.ed-btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+.ed-btn-outline:hover {
+  border-color: #fff;
+  opacity: 1;
+}
+
+/* Black outline — for use on white backgrounds (build page footer) */
+.ed-btn-outline-black {
+  background: transparent;
+  color: #000;
+  border: 1px solid rgba(0,0,0,0.30);
+}
+.ed-btn-outline-black:hover {
+  border-color: #000;
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TICKER ANIMATION
+═══════════════════════════════════════════════════════ */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STAGGER ANIMATIONS
+═══════════════════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-fade-up {
+  animation: fadeInUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-fade {
+  animation: fadeIn 0.6s ease both;
+}
+
+.anim-d1  { animation-delay: 0.05s; }
+.anim-d2  { animation-delay: 0.15s; }
+.anim-d3  { animation-delay: 0.28s; }
+.anim-d4  { animation-delay: 0.42s; }
+.anim-d5  { animation-delay: 0.58s; }
+
+/* ═══════════════════════════════════════════════════════
+   IMAGE HOVER
+═══════════════════════════════════════════════════════ */
+.img-zoom {
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.img-hover:hover .img-zoom {
+  transform: scale(1.04);
+}
+
+/* ═══════════════════════════════════════════════════════
+   LEVEL BAR
+═══════════════════════════════════════════════════════ */
+.level-bar {
+  height: 3px;
+  width: 1.5rem;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.level-card:hover .level-bar {
+  width: 3rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LINK SWEEP
+═══════════════════════════════════════════════════════ */
+.link-sweep {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-sweep::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.25s ease;
+}
+
+.link-sweep:hover::after,
+.link-sweep.active::after {
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COURSE ROW — red fill on hover
+═══════════════════════════════════════════════════════ */
+.course-row {
+  transition: background-color 0.18s ease;
+}
+.course-row:hover {
+  background-color: var(--color-canvas);
+}
+.course-row:hover .course-title  { color: #fff; }
+.course-row:hover .course-meta   { color: rgba(255,255,255,0.5); }
+.course-row:hover .course-arrow  { color: #fff; }
+
+/* ═══════════════════════════════════════════════════════
+   EDITORIAL CARD — 032c magazine image-first
+═══════════════════════════════════════════════════════ */
+.editorial-card {
+  text-decoration: none;
+  display: block;
+}
+
+/* Image zoom on hover */
+.editorial-card-img {
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.editorial-card:hover .editorial-card-img {
+  transform: scale(1.04);
+}
+
+/* course-index hover fix */
+.course-row:hover .course-index { color: rgba(255,255,255,0.4); }
+
+/* ═══════════════════════════════════════════════════════
+   LESSON PLACEHOLDER — 16:9 card media zone (no image)
+═══════════════════════════════════════════════════════ */
+.lesson-placeholder {
+  position: relative;
+}
+
+.lesson-placeholder-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+}
+
+.lesson-placeholder > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES — 雙語字型 utility class
+   letter-spacing 加 !important 以覆蓋全站 * { letter-spacing: 0 !important } reset
+═══════════════════════════════════════════════════════ */
+
+/* Cormorant 英文展示大字（斜體） */
+.font-display-en {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.025em !important;
+}
+
+/* Cormorant 英文展示大字（正體） */
+.font-display-en-upright {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -0.02em !important;
+}
+
+/* DM Sans 英文 eyebrow label */
+.font-eyebrow-en {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Noto Serif TC 繁中主標題 */
+.font-zh-display {
+  font-family: var(--font-zh-serif);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0.05em !important;
+}
+
+/* Noto Serif TC 繁中次標題 */
+.font-zh-title {
+  font-family: var(--font-zh-serif);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.04em !important;
+}
+
+/* Noto Sans TC 繁中內文 */
+.font-zh-body {
+  font-family: var(--font-zh-sans);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.9;
+  letter-spacing: 0.02em !important;
+}
+
+/* Noto Sans TC 繁中輔助文字、標籤 */
+.font-zh-caption {
+  font-family: var(--font-zh-sans);
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.04em !important;
+}
+
+/* DM Sans 按鈕、導覽、UI 元素 */
+.font-ui {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.04em !important;
+}

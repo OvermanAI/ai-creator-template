@@ -1,0 +1,12 @@
+{
+  "nav": [
+    { "label": "課程", "href": "/courses" },
+    { "label": "定價", "href": "/pricing" },
+    { "label": "部落格", "href": "/blog" }
+  ],
+  "features": {
+    "googleOAuth": false,
+    "payment": false,
+    "email": false
+  }
+}
