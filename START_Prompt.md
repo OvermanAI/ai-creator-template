@@ -1,12 +1,11 @@
 # START_Prompt.md
 
 把以下提示詞複製貼上到新的 Claude Code 對話，就可以開始了。
-**使用前先把 `aivideo-tw` 換成你的站名。**
 
 ---
 
 ```
-請先閱讀 CLAUDE.md。讀完後，依文件中的技術架構與設計系統，為這個已 clone 好的母版完成客製化與部署。
+請先閱讀 CLAUDE.md。讀完後，依文件中的技術架構與設計系統，為新站完成品牌設定、客製化與部署。
 
 請以 Claude Code 主導整個流程：品牌設定、coach.config、seed-data、環境變數、資料庫、部署、smoke test。
 人只負責瀏覽器授權，不要把任何技術步驟留給使用者手動操作。
@@ -17,13 +16,21 @@
 
 ---
 
-## 第一步：從 GitHub template 建立新站
+## 第一步：收集品牌資訊
 
-執行以下指令（已包含 clone）：
+開始前，先詢問使用者以下資訊（一次問完，不要逐一問）：
+
+1. **站名（repo name）**：例如 `aivideo-tw`（全小寫、用 `-` 連接，這也是 GitHub repo 名稱）
+2. **品牌顯示名稱**：例如 `aiart.tw`、`AIVIDEO.TW`
+3. **Tagline**：一句話說明這個網站在做什麼
+4. **主色（accentColor）**：Hex 色碼，例如 `#FF6B9D`
+5. **Domain**：例如 `aivideo.tw`
+
+收到回答後，用這些資訊執行以下指令建立新站：
 
 \`\`\`bash
-gh repo create aivideo-tw --private --template OvermanAI/ai-creator-template --clone
-cd aivideo-tw
+gh repo create {站名} --private --template OvermanAI/ai-creator-template --clone
+cd {站名}
 \`\`\`
 
 ---
