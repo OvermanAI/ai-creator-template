@@ -21,11 +21,14 @@
 開始前，先詢問使用者以下資訊（一次問完，不要逐一問）：
 
 1. **Domain**：例如 `aivideo.tw`
-2. **品牌顯示名稱**：例如 `AIVIDEO.TW`（通常就是 domain 大寫）
-3. **Tagline**：一句話說明這個網站在做什麼
-4. **主色（accentColor）**：Hex 色碼，例如 `#FF6B00`
+2. **Tagline**：一句話說明這個網站在做什麼
+3. **主色（accentColor）**：Hex 色碼，例如 `#FF6B00`
 
-收到回答後，自動將 domain 轉換為 repo name（`aivideo.tw` → `aivideo-tw`），
+收到回答後，自動推導其他所有技術細節：
+- repo name：`aivideo.tw` → `aivideo-tw`
+- 品牌顯示名稱：`aivideo.tw` → `AIVIDEO.TW`
+- template：固定使用 `OvermanAI/ai-creator-template`
+
 然後執行以下指令建立新站：
 
 \`\`\`bash
