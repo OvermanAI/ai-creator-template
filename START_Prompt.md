@@ -20,17 +20,17 @@
 
 開始前，先詢問使用者以下資訊（一次問完，不要逐一問）：
 
-1. **站名（repo name）**：例如 `aivideo-tw`（全小寫、用 `-` 連接，這也是 GitHub repo 名稱）
-2. **品牌顯示名稱**：例如 `aiart.tw`、`AIVIDEO.TW`
+1. **Domain**：例如 `aivideo.tw`
+2. **品牌顯示名稱**：例如 `AIVIDEO.TW`（通常就是 domain 大寫）
 3. **Tagline**：一句話說明這個網站在做什麼
-4. **主色（accentColor）**：Hex 色碼，例如 `#FF6B9D`
-5. **Domain**：例如 `aivideo.tw`
+4. **主色（accentColor）**：Hex 色碼，例如 `#FF6B00`
 
-收到回答後，用這些資訊執行以下指令建立新站：
+收到回答後，自動將 domain 轉換為 repo name（`aivideo.tw` → `aivideo-tw`），
+然後執行以下指令建立新站：
 
 \`\`\`bash
-gh repo create {站名} --private --template OvermanAI/ai-creator-template --clone
-cd {站名}
+gh repo create {repo-name} --private --template OvermanAI/ai-creator-template --clone
+cd {repo-name}
 \`\`\`
 
 ---
