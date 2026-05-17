@@ -18,18 +18,23 @@
 
 ## 第一步：收集品牌資訊
 
-開始前，先詢問使用者以下資訊（一次問完，不要逐一問）：
+開始前，請使用者提供：
 
-1. **Domain**：例如 `aivideo.tw`
-2. **Tagline**：一句話說明這個網站在做什麼
-3. **主色（accentColor）**：Hex 色碼，例如 `#FF6B00`
+- **網站參考圖**（品牌視覺、設計風格、任何靈感圖片皆可）
+- **網站網址**（如果已有域名，例如 `aivideo.tw`；沒有也沒關係）
 
-收到回答後，自動推導其他所有技術細節：
-- repo name：`aivideo.tw` → `aivideo-tw`
-- 品牌顯示名稱：`aivideo.tw` → `AIVIDEO.TW`
-- template：固定使用 `OvermanAI/ai-creator-template`
+從圖片與網址中自動萃取所有品牌資訊：
+- domain / repo name（從網址推導；無網址則從圖片品牌名稱推導）
+- 品牌顯示名稱
+- tagline
+- 主色（accentColor，從圖片取色）
 
-然後執行以下指令建立新站：
+萃取完成後向使用者確認一次，確認後立即執行建站：
+
+\`\`\`bash
+gh repo create {repo-name} --private --template OvermanAI/ai-creator-template --clone
+cd {repo-name}
+\`\`\`
 
 \`\`\`bash
 gh repo create {repo-name} --private --template OvermanAI/ai-creator-template --clone
